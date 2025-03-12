@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="image/1.png">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MJR Diagnostic & Medical Supply</title>
+
+    <style>
+        html,
+        body {
+            background-image: url('image/logo.png'); /* Change to your background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the background image */
+            color: #242323;
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: rgba(228, 103, 235, 0.9); /* Semi-transparent background */
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: white;
+            margin: 0;
+            font-size: 36px;
+            transition: transform 0.3s; /* Animation on header */
+        }
+
+        header h1:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .menu {
+            display: flex; /* Use flexbox for horizontal layout */
+            justify-content: center; /* Center menu items */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for menu */
+            padding: 10px 0;
+            margin-top: 10px;
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .menu-item {
+            position: relative; /* Position relative for tooltip */
+            padding: 10px 20px;
+            color: #242323;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for hover effects */
+            margin: 0 15px; /* Space between menu items */
+            border-radius: 5px; /* Rounded corners for menu items */
+        }
+
+        .menu-item a {
+            color: inherit; /* Inherit color from the menu item */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        .menu-item:hover {
+            background-color: rgba(216, 75, 221); /* Change color on hover */
+            color: white; /* Change text color on hover */
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+        }
+
+        .tooltip {
+            visibility: hidden; /* Initially hidden */
+            background-color: rgba(51, 51, 51, 0.8); /* Tooltip background */
+            color: #ffff; /* Tooltip text color */
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute; /* Change to absolute */
+            z-index: 5;
+            bottom: -100px; /* Position below the menu item */
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 5px; /* Space between tooltip and menu item */
+            opacity: 0; /* Initially transparent */
+            transition: opacity 0.3s, transform 0.3s; /* Smooth transition */
+        }
+
+        .menu-item:hover .tooltip {
+            visibility: visible; /* Show tooltip on hover */
+            opacity: 1; /* Make tooltip visible */
+            transform: translate(-50%, 0); /* Move tooltip down to its position */
+        }
+
+        .content {
+            flex: 1; /* Allow content to grow and fill available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            text-align: center;
+            padding: 50px 20px;
+            z-index: 1;
+        }
+
+        footer {
+            background-color: rgba(228, 103, 235, 0.9); /* Semi-transparent footer */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            z-index: 1;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>MJR Diagnostic & Medical Supply</h1>
+        <div class="menu">
+            <div class="menu-item">
+                <a href="about.php">About</a>
+            </div>
+            <div class="menu-item">
+                <a href="about.php">Address</a>
+                <span class="tooltip">#98 Pama St. Ma. Socorro Subdivision Abangan Norte Marilao Bulacan</span>
+            </div>
+            <div class="menu-item">
+                <a href="about.php">Contact Us</a>
+                <span class="tooltip">Contact Number: 09175081876/044-913-6691 / Email: mjr2014diagnostic@yahoo.com</span>
+            </div>
+            <div class="menu-item">
+                <a href="mjr/admin/">Admin Log In</a>
+                <span class="tooltip">Login as an Admin</span>
+            </div>
+            <div class="menu-item">
+                <a href="mjr/cashier/">Encoder Log In</a>
+                <span class="tooltip">Login as an Encoder</span>
+            </div>
+            <div class="menu-item">
+                <a href="mjr/customer">Customer Log In</a>
+                <span class="tooltip">Login as a Customer</span>
+            </div>
+        </div>
+    </header>
+
+    <footer>
+        <p>&copy; 2024 MJR Diagnostic & Medical Supply. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

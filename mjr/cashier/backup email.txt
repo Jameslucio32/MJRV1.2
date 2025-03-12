@@ -1,0 +1,63 @@
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/phpmailer/src/Exception.php';
+require __DIR__ . '/phpmailer/src/SMTP.php';
+
+if (isset($_POST['email'], $_POST['subject'], $_POST['message'], $_FILES['file'])) {
+    $mail = new PHPMailer(true);
+
+    try {
+        // Server Settings
+        $mail->isSMTP();
+        $mail->Host         = 'smtp.gmail.com';
+        $mail->SMTPAuth     = true;
+        $mail->Username     = 'mjrdiagnosticmedicalsupply@gmail.com';
+        $mail->Password     = 'your_app_password'; // Use an app password if 2FA is enabled
+        $mail->SMTPSecure   = PHPMailer::ENCRYPTION_STARTTLS; // Use 'tls' for port 587
+        $mail->Port         = 587; // Use 587 for TLS
+
+        // Recipient
+        $mail->setFrom('mjrdiagnosticmedicalsupply@gmail.com', 'MJR Diagnostic & Medical Supply');
+        $mail->addAddress($_POST['email']);
+        $mail->addReplyTo('mjrdiagnosticmedicalsupply@gmail.com', 'MJR Diagnostic & Medical Supply');
+
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = $_POST['subject'];
+        $mail->Body    = $_POST['message'];
+
+        // Attachment
+        if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
+            $file_path = $_FILES['file']['tmp_name'];
+            $file_name = $_FILES['file']['name'];
+            $mail->addAttachment($file_path, $file_name);
+        }
+
+        // // Send Email
+        $mail->send();
+        echo "
+        <script>
+            alert('Email sent successfully!');
+            document.location.href = 'index.php';
+        </script>
+        ";
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+} else {
+    echo "
+    <script>
+        alert('Fill all the inputs!');
+        document.location.href = 'index.php';
+    </script>
+    ";
+}
+?> ### 9. **Check PHP Configuration**
+Ensure that your PHP installation has the OpenSSL extension enabled. You can check this by creating a PHP file with the following content:
+
+```php
+<?php
+phpinfo();
+?>
